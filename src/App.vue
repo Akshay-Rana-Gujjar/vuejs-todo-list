@@ -1,28 +1,76 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld/>
+    <todo-list v-bind:todos="todos"></todo-list>
+
+    <create-todo v-on:create-todo="addTodo"></create-todo>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+import TodoList from "./components/TodoList";
+import CreateTodo from "./components/CreateTodo";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld,
+    TodoList,
+    CreateTodo
+  },
+
+  data() {
+    return {
+      todos: [
+        {
+          title: "title 1",
+          project: "project 1",
+          done: false
+        },
+        {
+          title: "title 2",
+          project: "project 2",
+          done: true
+        },
+        {
+          title: "title 3",
+          project: "project 3",
+          done: false
+        },
+        {
+          title: "title 4",
+          project: "project 4",
+          done: false
+        },
+        {
+          title: "title 5",
+          project: "project 5",
+          done: true
+        },
+        {
+          title: "title 6",
+          project: "project 6",
+          done: false
+        },
+        {
+          title: "title 7",
+          project: "project 7",
+          done: false
+        },
+        {
+          title: "title 8",
+          project: "project 8",
+          done: false,
+        },
+      ],
+    };
+  },
+  methods: {
+    addTodo(newTodo) {
+      console.log(newTodo);
+      this.todos.push(newTodo);
+    },
   },
 };
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
